@@ -6,8 +6,13 @@ public class Coordinates {
 
     public Coordinates(String name) {
         String chessLabel = name.substring(name.length() - 2);
-        this.x = 3 - (chessLabel.charAt(1) - '0');
-        this.y = chessLabel.charAt(0) - 'A';
+        int xCoord = 3 - (chessLabel.charAt(1) - '0');
+        int yCoord = chessLabel.charAt(0) - 'A';
+        if (xCoord < 0 || xCoord > 2 || yCoord < 0 || yCoord > 2) {
+            throw new IllegalArgumentException("Coordinate must be in range A0 to C3");
+        }
+        this.x = xCoord;
+        this.y = yCoord;
     }
 
     public int getX() {
